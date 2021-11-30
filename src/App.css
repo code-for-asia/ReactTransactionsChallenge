@@ -1,6 +1,7 @@
 .App {
   text-align: left;
   padding: 25px;
+  padding-left: 35%;
 }
 
 .App-logo {
@@ -10,7 +11,7 @@
 
 .box{
   display: inline-block;
-  width: 100px;
+  width: 85px;
   height: 45px;
   margin: 10px aut0;
   overflow: auto;
@@ -23,6 +24,8 @@
 .input-box{
   color: #888;
   margin-bottom: 5px;
+  padding: 5px;
+  width: 215px;
 }
 
 .input-box-focus{
@@ -32,6 +35,11 @@
 
 .radio{
   margin-bottom: 15px;
+
+}
+
+.expenseRadio{
+  margin-right:10px
 }
 
 .form{
@@ -41,6 +49,52 @@
 .history{
   display: inline-block;
   margin-right: 10px;
+}
+
+.income{
+  color: green
+}
+
+.expense{
+  color: red;
+}
+
+.balance{
+  font-weight: 200;
+}
+
+.add-button{
+  background-color: #527df1; /* Green */
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 225px;
+}
+
+.clear-button{
+  background-color: lightcoral;
+  border: none;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+
+.transaction-box{
+  width: 225px;
+  margin: 10px aut0;
+  overflow: auto;
+  box-shadow: 1px 3px 2px 1px #9E9E9E;
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 15px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

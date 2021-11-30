@@ -96,13 +96,13 @@ function App() {
       return
     }
 
-    if (expBtn === true && (calBalance() < parseInt(amt))){
+    if (expBtn === true && (calBalance() < parseFloat(amt))){
       window.alert("Error: Insufficient balance")
       return
     }
 
     setTransactions(prevTransactions => {
-      return [{ id: randomId(), name: title, amount:parseInt(amt) , income: incBtn}, ... prevTransactions]
+      return [{ id: randomId(), name: title, amount:parseFloat(amt) , income: incBtn}, ... prevTransactions]
     })
 
 
@@ -120,7 +120,7 @@ function App() {
   function calValue(cond){
     if (transactions.length > 0){
       let incomeTransactions = transactions.filter(transaction => transaction.income === cond)
-      let incomes = incomeTransactions.map(transaction => parseInt(transaction.amount))
+      let incomes = incomeTransactions.map(transaction => parseFloat(transaction.amount))
       return incomes.reduce((a, b) => a + b, 0)
     }
     else{
@@ -137,16 +137,16 @@ function App() {
   return (
     <>
        <div className = "App">
-        <p>Your Balance <br></br> $ {calBalance()}</p>
+        <p>Your Balance <br></br> <strong> $ {calBalance()} </strong> </p> 
         <div>
             <div className = "box">
                 Expence
-                <br></br> $ {calValue(false)}
+                <br></br> <span className = "expense"> $ {calValue(false)} </span>
             </div>
 
             <div className = "box">
                 Income
-                <br></br> $ {calValue(true)}
+                <br></br> <span className = "income"> $ {calValue(true)} </span>
             </div>
         </div>
 
@@ -165,20 +165,20 @@ function App() {
 
           <div className = "radio">
             <input ref = {expenseRef} type="radio" id = "expence" name="transaction_type" value="Expence"></input>
-            <label htmlFor="expence">Expence</label>
+            <label className = "expenseRadio" htmlFor="expence">Expence</label>
             
             <input ref = {incomeRef} type="radio" id = "income" name="transaction_type" value="Income"></input>
             <label htmlFor="income">Income</label>
           </div>
 
-          <input type="submit" value="Add Transaction" onClick = {handleAddTransaction}></input>
+          <input type="submit" className = "add-button" value="Add Transaction" onClick = {handleAddTransaction}></input>
           
           
         </div>
 
         <div >
           <p className = "history">History</p>
-          <button type = "button" onClick = {handleClearTransactions}>Clear</button>
+          <button className = "clear-button" type = "button" onClick = {handleClearTransactions}>Clear</button>
         </div>
         
         <Transactions transactions = {transactions} />
