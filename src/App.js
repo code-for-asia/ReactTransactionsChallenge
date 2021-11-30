@@ -150,12 +150,13 @@ function App() {
             </div>
         </div>
 
-        <p>
+        {/* <p>
           Add Transaction
-        </p>
+        </p> */}
 
         <div className = "form">
           <div>
+            <p className = "add-label"> Add Transaction</p>
             <input ref = {titleRef} className = "input-box" type="text" name="title" defaultValue = "Transaction Title" onFocus = {handleFocusTitle} onBlur = {handleBlurTitle}/>
           </div>
 
