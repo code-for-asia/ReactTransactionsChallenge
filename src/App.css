@@ -1,10 +1,46 @@
 .App {
-  text-align: center;
+  text-align: left;
+  padding: 25px;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.box{
+  display: inline-block;
+  width: 100px;
+  height: 45px;
+  margin: 10px aut0;
+  overflow: auto;
+  box-shadow: 1px 3px 2px 1px #9E9E9E;
+  padding: 12.5px;
+  margin-right: 10px;
+  margin-bottom: 25px;
+}
+
+.input-box{
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.input-box-focus{
+  color: #282c34;
+  margin-bottom: 5px;
+}
+
+.radio{
+  margin-bottom: 15px;
+}
+
+.form{
+  margin-bottom: 30px;
+}
+
+.history{
+  display: inline-block;
+  margin-right: 10px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
