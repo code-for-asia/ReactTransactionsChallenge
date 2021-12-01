@@ -8,7 +8,6 @@ function getTransactionColor(transaction){
     else{
         return "expense-history"
     }
-
 }
 
 export default function Transaction( {transaction} ) {
@@ -18,7 +17,6 @@ export default function Transaction( {transaction} ) {
             <span className = {getTransactionColor(transaction)}>
                 $ {(Math.round(transaction.amount * 100) / 100).toFixed(2)}
             </span>
-            
         </div>
     )
 }
