@@ -102,7 +102,7 @@ function App() {
     }
 
     setTransactions(prevTransactions => {
-      return [{ id: randomId(), name: title, amount:parseFloat(amt) , income: incBtn}, ... prevTransactions]
+      return [{ id: randomId(), name:title, amount:parseFloat(amt) , income:incBtn}, ...prevTransactions]
     })
 
 
@@ -133,20 +133,24 @@ function App() {
     return (calValue(true) - calValue(false))
   }
 
+  function formatAmount(num){
+    return (Math.round(num * 100) / 100).toFixed(2);
+  }
+
 
   return (
     <>
        <div className = "App">
-        <p>Your Balance <br></br> <strong> $ {calBalance()} </strong> </p> 
+        <p>Your Balance <br></br> <strong id = "balanceDisplay"> $ {formatAmount(calBalance())} </strong> </p> 
         <div>
-            <div className = "box">
+            <div className = "box" >
                 Expence
-                <br></br> <span className = "expense"> $ {calValue(false)} </span>
+                <br></br> <span id = "expenceDisplay" className = "expense"> $ {formatAmount(calValue(false))} </span>
             </div>
 
-            <div className = "box">
+            <div className = "box" >
                 Income
-                <br></br> <span className = "income"> $ {calValue(true)} </span>
+                <br></br> <span id = "incomeDisplay" className = "income"> $ {formatAmount(calValue(true))} </span>
             </div>
         </div>
 
@@ -157,11 +161,11 @@ function App() {
         <div className = "form">
           <div>
             <p className = "add-label"> Add Transaction</p>
-            <input ref = {titleRef} className = "input-box" type="text" name="title" defaultValue = "Transaction Title" onFocus = {handleFocusTitle} onBlur = {handleBlurTitle}/>
+            <input ref = {titleRef} id = 'titleInput' className = "input-box" type="text" name="title" defaultValue = "Transaction Title" onFocus = {handleFocusTitle} onBlur = {handleBlurTitle}/>
           </div>
 
           <div>
-            <input ref = {amtRef} className = "input-box" type="text" name="amount" defaultValue = "Amount" onFocus = {handleFocusAmt} onBlur = {handleBlurAmt}/>
+            <input ref = {amtRef} id = 'amountInput' className = "input-box" type="text" name="amount" defaultValue = "Amount" onFocus = {handleFocusAmt} onBlur = {handleBlurAmt}/>
           </div>
 
           <div className = "radio">
@@ -172,17 +176,23 @@ function App() {
             <label htmlFor="income">Income</label>
           </div>
 
-          <input type="submit" className = "add-button" value="Add Transaction" onClick = {handleAddTransaction}></input>
+          <input id = "addButton" type="submit" className = "add-button" value="Add Transaction" onClick = {handleAddTransaction}></input>
           
           
         </div>
 
-        <div >
-          <p className = "history">History</p>
-          <button className = "clear-button" type = "button" onClick = {handleClearTransactions}>Clear</button>
+        <div id = "historyList">
+          <div >
+            <p className = "history">History</p>
+            <button className = "clear-button" type = "button" onClick = {handleClearTransactions}>Clear</button>
+          </div>
+
+          <Transactions transactions = {transactions} />
+
         </div>
         
-        <Transactions transactions = {transactions} />
+        
+        
       </div>
     </>
   )
