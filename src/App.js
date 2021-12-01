@@ -102,7 +102,7 @@ function App() {
     }
 
     setTransactions(prevTransactions => {
-      return [{ id: randomId(), name: title, amount:parseFloat(amt) , income: incBtn}, ... prevTransactions]
+      return [{ id: randomId(), name:title, amount:parseFloat(amt) , income:incBtn}, ...prevTransactions]
     })
 
 
@@ -133,20 +133,24 @@ function App() {
     return (calValue(true) - calValue(false))
   }
 
+  function formatAmount(num){
+    return (Math.round(num * 100) / 100).toFixed(2);
+  }
+
 
   return (
     <>
        <div className = "App">
-        <p>Your Balance <br></br> <strong> $ {calBalance()} </strong> </p> 
+        <p>Your Balance <br></br> <strong> $ {formatAmount(calBalance())} </strong> </p> 
         <div>
             <div className = "box">
                 Expence
-                <br></br> <span className = "expense"> $ {calValue(false)} </span>
+                <br></br> <span className = "expense"> $ {formatAmount(calValue(false))} </span>
             </div>
 
             <div className = "box">
                 Income
-                <br></br> <span className = "income"> $ {calValue(true)} </span>
+                <br></br> <span className = "income"> $ {formatAmount(calValue(true))} </span>
             </div>
         </div>
 
