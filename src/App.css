@@ -65,8 +65,18 @@
   color: green
 }
 
+.income-history{
+  color: green;
+  float: right;
+}
+
 .expense{
   color: red;
+}
+
+.expense-history{
+  color: red;
+  float: right;
 }
 
 .balance{
