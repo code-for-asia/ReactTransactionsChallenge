@@ -82,17 +82,17 @@ function App() {
    
 
     if (title === titleRef.current.defaultValue || title === ''){
-      window.alert("Please enter a transaction title")
+      window.alert("Please enter a valid transaction title")
       return
     }
 
-    if (amt === amtRef.current.defaultValue || amt === ''){
-      window.alert("Please enter a transaction title")
+    if (amt === amtRef.current.defaultValue || amt === '' || parseInt(amt) < 0){
+      window.alert("Please enter a valid transaction amount")
       return
     }
 
     if (incBtn === false && expBtn === false){
-      window.alert("Please select the transaction amount")
+      window.alert("Please select the transaction type")
       return
     }
 
