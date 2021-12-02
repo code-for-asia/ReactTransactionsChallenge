@@ -74,23 +74,40 @@ function App() {
     const amt= amtRef.current.value
     const incBtn = incomeRef.current.checked
     const expBtn = expenseRef.current.checked
-
-    // console.log(title)
-    // console.log(amt)
-    // console.log(incBtn)
-    // console.log(expBtn)
    
 
+    // test if entered title is valid
     if (title === titleRef.current.defaultValue || title === ''){
       window.alert("Please enter a valid transaction title")
       return
     }
 
-    if (amt === amtRef.current.defaultValue || amt === '' || parseInt(amt) < 0){
+    // test if entered amount is valid
+    if (amt === amtRef.current.defaultValue || amt === ''){
       window.alert("Please enter a valid transaction amount")
       return
     }
 
+    // testing if entered amount is a number and is grater than 0
+    try{
+      if (isNaN(parseInt(amt))){
+        window.alert("Please enter a valid transaction amount")
+        return
+      }
+      else{
+        if (parseInt(amt) < 0){
+          window.alert("Please enter a valid transaction amount")
+          return
+        }
+      }
+    }
+    catch{
+      window.alert("Please enter a valid transaction amount")
+      return
+    }
+   
+
+    // checkig if a type is selected
     if (incBtn === false && expBtn === false){
       window.alert("Please select the transaction type")
       return
@@ -101,6 +118,7 @@ function App() {
       return
     }
 
+    // updating the transaction history
     setTransactions(prevTransactions => {
       return [{ id: randomId(), name:title, amount:parseFloat(amt) , income:incBtn}, ...prevTransactions]
     })
